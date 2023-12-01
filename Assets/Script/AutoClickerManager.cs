@@ -8,6 +8,8 @@ public class AutoClickerManager : MonoBehaviour
     public List<bool> AutoClickers;
     public int autoClickAmount;
     public float autoClickTimer;
+    public CoinThrower leftCoinThrower;
+    public CoinThrower rightCoinThrower;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,16 +22,25 @@ public class AutoClickerManager : MonoBehaviour
         
     }
 
-    
+    void SendCoin()
+    {
+        
+        int selector = Random.Range(0, 2);
+        if (selector == 0) { leftCoinThrower.ThrowACoin(); }
+        if (selector == 1) {  rightCoinThrower.ThrowACoin(); }
+
+    }
+
     public IEnumerator Autoclick(int amount, float timeToWait)
     {
         while (true)
         {
-            Debug.Log("Yo !");
+            //Debug.Log("Yo !");
             foreach (var autoclick in AutoClickers) {
                 if (autoclick == true)
                 {
-                    ScoreManagerReference.RaiseTimer(amount);
+                    //ScoreManagerReference.RaiseTimer(amount);
+                    SendCoin();
                 }
             }
             

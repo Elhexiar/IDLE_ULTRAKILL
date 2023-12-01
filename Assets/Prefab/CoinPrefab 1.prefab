@@ -11,10 +11,12 @@ GameObject:
   - component: {fileID: 1579789733627672955}
   - component: {fileID: 5759125753453298264}
   - component: {fileID: 9092018304845892773}
-  - component: {fileID: 3226253443003912747}
+  - component: {fileID: 8507518310688694753}
+  - component: {fileID: 2605339887749707799}
   - component: {fileID: 3290756816354126231}
   - component: {fileID: 3107033345144330591}
-  m_Layer: 0
+  - component: {fileID: 8082968105001544551}
+  m_Layer: 6
   m_Name: CoinPrefab 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +88,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3226253443003912747
+--- !u!136 &8507518310688694753
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,6 +111,27 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &2605339887749707799
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031201906260757099}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 243
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 6.5179963
+  m_Center: {x: -0.23588586, y: 0, z: 0}
 --- !u!54 &3290756816354126231
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,5 +173,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
   target: {fileID: 0}
-  jumpForce: -400
+  jumpForce: -478.2
   autoDestructionTimer: 3
+  scoreManagerReference: {fileID: 0}
+  value: 1
+  randomLowHeightOffset: 1.03
+  randomHighHeightOffset: 4.71
+--- !u!114 &8082968105001544551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031201906260757099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa29837523280f41a59d3b18ee7fa7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
