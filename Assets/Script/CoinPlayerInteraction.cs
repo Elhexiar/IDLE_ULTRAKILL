@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CoinPlayerInteraction : MonoBehaviour
 {
-
+    public ScoreManager scoreManagerReference;
+    public int amount;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,8 @@ public class CoinPlayerInteraction : MonoBehaviour
 
     private void OnMouseDown()
     {
+        scoreManagerReference.RaiseTimer(amount);
+        Destroy(gameObject);
         Debug.Log("YEP");
     }
 }

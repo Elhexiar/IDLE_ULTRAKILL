@@ -10,10 +10,14 @@ public class AutoClickerManager : MonoBehaviour
     public float autoClickTimer;
     public CoinThrower leftCoinThrower;
     public CoinThrower rightCoinThrower;
+    public float timeOffset;
+    public bool alternate;
+    public bool leftSideSelected;
+    public bool rightSideSelected;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Autoclick(autoClickAmount, autoClickTimer));
+        StartCoroutine(Autoclick(autoClickAmount, autoClickTimer, timeOffset));
     }
 
     // Update is called once per frame
@@ -24,14 +28,19 @@ public class AutoClickerManager : MonoBehaviour
 
     void SendCoin()
     {
+        if (alternate)
+        {
+            
+        }
+        else
+        {
+            
+        }
         
-        int selector = Random.Range(0, 2);
-        if (selector == 0) { leftCoinThrower.ThrowACoin(); }
-        if (selector == 1) {  rightCoinThrower.ThrowACoin(); }
 
     }
 
-    public IEnumerator Autoclick(int amount, float timeToWait)
+    public IEnumerator Autoclick(int amount, float timeToWait, float timeOffset)
     {
         while (true)
         {
@@ -39,14 +48,32 @@ public class AutoClickerManager : MonoBehaviour
             foreach (var autoclick in AutoClickers) {
                 if (autoclick == true)
                 {
+                    int selector = Random.Range(0, 2);
+                    
                     //ScoreManagerReference.RaiseTimer(amount);
-                    SendCoin();
+
+                    Debug.Log("Sending V1");
+                    if (selector == 0) { leftSideSelected = true; leftCoinThrower.SendV1(); }
+                    if (selector == 1) { leftSideSelected = false; rightCoinThrower.SendV1(); }
+                    
+                    StartCoroutine(CoinSendingRoutine(timeOffset, selector));
+                    
                 }
             }
             
             yield return new WaitForSeconds(timeToWait);
         }
 
+    }
+
+    public IEnumerator CoinSendingRoutine(float timeOffset, int selector)
+    {
+
+        Debug.Log("Precoin +" + timeOffset.ToString());
+        yield return new WaitForSeconds(timeOffset);
+        Debug.Log("Coin");
+        if (selector == 0) { leftSideSelected = true; leftCoinThrower.ThrowACoin(); }
+        if (selector == 1) { leftSideSelected = false; rightCoinThrower.ThrowACoin(); }
     }
 }
     
