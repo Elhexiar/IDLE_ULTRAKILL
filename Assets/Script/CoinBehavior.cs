@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinJump : MonoBehaviour
+public class CoinBehavior : MonoBehaviour
 {
     public Transform origin;
     public Transform target;
@@ -41,11 +41,13 @@ public class CoinJump : MonoBehaviour
 
     }
 
+    /*
     private void OnMouseDown()
     {
         scoreManagerReference.RaiseTimer(value);
         Destroy(gameObject);
     }
+    */
 
 
 }

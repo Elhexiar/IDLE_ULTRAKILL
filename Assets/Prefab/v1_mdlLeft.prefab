@@ -146,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6335090bee27f9d45933bf6108ab9c49, type: 3}
       propertyPath: m_Name
-      value: v1_mdl
+      value: v1_mdlLeft
       objectReference: {fileID: 0}
     - target: {fileID: 1442189090550986323, guid: 6335090bee27f9d45933bf6108ab9c49, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -254,9 +254,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6335090bee27f9d45933bf6108ab9c49, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 198486580256194016}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6335090bee27f9d45933bf6108ab9c49, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6620904994841524182}
   m_SourcePrefab: {fileID: 100100000, guid: 6335090bee27f9d45933bf6108ab9c49, type: 3}
 --- !u!1 &4029311853910469573 stripped
@@ -264,27 +261,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6335090bee27f9d45933bf6108ab9c49, type: 3}
   m_PrefabInstance: {fileID: 4263664309639812756}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &198486580256194016
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4029311853910469573}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 91516f0c1ccbee54fb68aa37d53c2f44, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6620904994841524182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,3 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBeforeAutoDestruct: 5
   destroy: 0
+  leftSide: 1
+  rightSide: 0
+  target: {fileID: 0}
+  speed: 0.05

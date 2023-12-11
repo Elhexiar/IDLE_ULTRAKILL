@@ -6,6 +6,10 @@ public class V1Behaviour : MonoBehaviour
 {
     public float timeBeforeAutoDestruct;
     public bool destroy = false;
+    public bool leftSide = false;
+    public bool rightSide = false;
+    public Transform target;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +20,7 @@ public class V1Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
     }
 
      public IEnumerator AutoDie()

@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
         
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         scoreUIReference.text = score.ToString();
 

@@ -69,9 +69,8 @@ public class AutoClickerManager : MonoBehaviour
     public IEnumerator CoinSendingRoutine(float timeOffset, int selector)
     {
 
-        Debug.Log("Precoin +" + timeOffset.ToString());
         yield return new WaitForSeconds(timeOffset);
-        Debug.Log("Coin");
+
         if (selector == 0) { leftSideSelected = true; leftCoinThrower.ThrowACoin(); }
         if (selector == 1) { leftSideSelected = false; rightCoinThrower.ThrowACoin(); }
     }

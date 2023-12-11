@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e0b15a9b816dd854fbdd2bdfc3910765, type: 2}
+    - target: {fileID: 198486580256194016, guid: 3d89fc1711193384e975863bb78def96, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4029311853910469573, guid: 3d89fc1711193384e975863bb78def96, type: 3}
       propertyPath: m_Name
       value: v1_mdlRight Variant
@@ -55,6 +59,14 @@ PrefabInstance:
     - target: {fileID: 4368823025192857983, guid: 3d89fc1711193384e975863bb78def96, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -113.55301
+      objectReference: {fileID: 0}
+    - target: {fileID: 6620904994841524182, guid: 3d89fc1711193384e975863bb78def96, type: 3}
+      propertyPath: leftSide
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6620904994841524182, guid: 3d89fc1711193384e975863bb78def96, type: 3}
+      propertyPath: rightSide
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6620904994841524182, guid: 3d89fc1711193384e975863bb78def96, type: 3}
       propertyPath: timeBeforeAutoDestruct
