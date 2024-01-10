@@ -16,6 +16,8 @@ public class CameraBehaviour : MonoBehaviour
     [SerializeField] private float timer;
     [SerializeField] private float timerLimit;
 
+    [SerializeField] private GameObject _ennemieShopTarget;
+
     [SerializeField] private bool _isPlaying = false;
     [SerializeField] private bool _onShop = false;
     [SerializeField] private bool _onEnnemie = true;
@@ -26,6 +28,7 @@ public class CameraBehaviour : MonoBehaviour
 
     void Start()
     {
+
         Debug.Log(transform.rotation.y);
         _originalRotation = transform.rotation;
         _ShopRotation = Quaternion.LookRotation(targetObject.transform.position - transform.position,Vector3.up);
