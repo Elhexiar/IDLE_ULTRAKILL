@@ -13,21 +13,56 @@ public class ShopManager : MonoBehaviour
     public int coinMultiplier = 1;
     public int coinMultiplierPrice = 20;
 
+    public GameObject ShopUI;
+    public GameObject EnnemieUI;
+
+    public CameraBehaviour cameraRef;
+
     // Start is called before the first frame update
     void Start()
     {
         CoinMultiplierTextRef.text = coinMultiplier.ToString();
+        leftCoinThrower.amoutToRaise = coinMultiplier;
+        rightCoinThrower.amoutToRaise = coinMultiplier;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+        // Je sais que c'est pas hyper bien d'avoir ca dans l'update a chaque fois
+        // mais j'avoue avoir pour l'instant un peu la flemme
+        // Mathis du futur c'est pour toi
+        if(cameraRef._isPlaying == true)
+        {
+            EnnemieUI.SetActive(false);
+            ShopUI.SetActive(false);
+        }
+        else
+        {
+            if(cameraRef._onShop == true)
+            {
+                ShopUI.SetActive(true);
+            }
+            else
+            {
+                EnnemieUI.SetActive(true);
+            }
+
+        }
+
     }
 
     public void BuyAV1()
     {
-        autoClickerManager.AutoClickers.Add(true);
+        if(scoreManager.score >= 20)
+        {
+            scoreManager.score -= 20;
+            autoClickerManager.AutoClickers.Add(true);
+            scoreManager.UpdateUI();
+        }
+        
 
     }
 

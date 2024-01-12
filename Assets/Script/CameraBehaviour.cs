@@ -18,8 +18,8 @@ public class CameraBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject _ennemieShopTarget;
 
-    [SerializeField] private bool _isPlaying = false;
-    [SerializeField] private bool _onShop = false;
+    [SerializeField] public bool _isPlaying = false;
+    [SerializeField] public bool _onShop = false;
     [SerializeField] private bool _onEnnemie = true;
 
     [SerializeField] private Vector3 aled;
