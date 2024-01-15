@@ -13,6 +13,11 @@ public class ShopManager : MonoBehaviour
     public int coinMultiplier = 1;
     public int coinMultiplierPrice = 20;
 
+    public int shotgunInitialPrice;
+    public int nailGunInitialPrice;
+    public int railgunInitialPrice;
+    public int cannonGunInitialPrice;
+
     public GameObject ShopUI;
     public GameObject EnnemieUI;
 
@@ -25,6 +30,7 @@ public class ShopManager : MonoBehaviour
         leftCoinThrower.amoutToRaise = coinMultiplier;
         rightCoinThrower.amoutToRaise = coinMultiplier;
 
+        ShopUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,10 +50,13 @@ public class ShopManager : MonoBehaviour
             if(cameraRef._onShop == true)
             {
                 ShopUI.SetActive(true);
+
+
             }
             else
             {
                 EnnemieUI.SetActive(true);
+                updateMultUI();
             }
 
         }
@@ -66,23 +75,34 @@ public class ShopManager : MonoBehaviour
 
     }
 
-    public void IncreaseCoinMultiplier()
+    public void CheckToIncreaseMult(int amount)
     {
         if (scoreManager.score >= coinMultiplierPrice)
         {
+            IncreaseCoinMultiplier(amount);
             scoreManager.score -= coinMultiplierPrice;
+            coinMultiplierPrice = coinMultiplierPrice + coinMultiplierPrice * coinMultiplier;
+        }
+    }
+    public void IncreaseCoinMultiplier(int amount)
+    {
+        Debug.Log("Try to increase multiplier");
+        
+            
             scoreManager.UpdateUI();
 
-            coinMultiplier++;
+            coinMultiplier += amount;
+            Debug.Log("Mult increased by" + amount);
             CoinMultiplierTextRef.text = coinMultiplier.ToString();
             leftCoinThrower.amoutToRaise = coinMultiplier;
             rightCoinThrower.amoutToRaise = coinMultiplier;
-            coinMultiplierPrice = coinMultiplierPrice + coinMultiplierPrice * coinMultiplier;
             coinMultiplierPriceTextRef.text = coinMultiplierPrice.ToString();
-        }
         
+    }
 
-
-
+    public void updateMultUI()
+    {
+        CoinMultiplierTextRef.text = coinMultiplier.ToString();
+        coinMultiplierPriceTextRef.text = coinMultiplierPrice.ToString();
     }
 }
