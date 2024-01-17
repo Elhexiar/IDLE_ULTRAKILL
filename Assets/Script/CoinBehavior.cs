@@ -29,6 +29,7 @@ public class CoinBehavior : MonoBehaviour
 
     public void Jump()
     {
+        // ca doit faire lagger de fou
         StartCoroutine(destryCoin(autoDestructionTimer));
         Vector3 jumpVector = (origin.position - (target.position + Vector3.up * Random.Range(randomLowHeightOffset, randomHighHeightOffset))).normalized;
         gameObject.GetComponent<Rigidbody>().AddForce(jumpVector * jumpForce);

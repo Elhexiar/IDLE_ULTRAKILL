@@ -102,8 +102,8 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
+    m_Bits: 64
+  m_LayerOverridePriority: 1
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
@@ -125,7 +125,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 243
+    m_Bits: 251
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -178,8 +178,8 @@ MonoBehaviour:
   autoDestructionTimer: 3
   scoreManagerReference: {fileID: 0}
   value: 1
-  randomLowHeightOffset: 3.02
-  randomHighHeightOffset: 5.41
+  randomLowHeightOffset: -2.62
+  randomHighHeightOffset: 10.1
 --- !u!114 &8082968105001544551
 MonoBehaviour:
   m_ObjectHideFlags: 0

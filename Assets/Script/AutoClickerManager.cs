@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AutoClickerManager : MonoBehaviour
 {
     public ScoreManager ScoreManagerReference;
     public List<bool> AutoClickers;
-    public List<Ennemie> EnnemiesList;
-    public List<EnnemieClicker> EnnemieClickerList;
+    
+
+
+    
 
     public int autoClickAmount;
     public float autoClickTimer;
@@ -26,7 +29,7 @@ public class AutoClickerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public IEnumerator Autoclick(int amount, float timeToWait, float timeOffset)
