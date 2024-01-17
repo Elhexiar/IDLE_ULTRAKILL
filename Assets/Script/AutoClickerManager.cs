@@ -6,6 +6,9 @@ public class AutoClickerManager : MonoBehaviour
 {
     public ScoreManager ScoreManagerReference;
     public List<bool> AutoClickers;
+    public List<Ennemie> EnnemiesList;
+    public List<EnnemieClicker> EnnemieClickerList;
+
     public int autoClickAmount;
     public float autoClickTimer;
     public CoinThrower leftCoinThrower;
@@ -24,20 +27,6 @@ public class AutoClickerManager : MonoBehaviour
     void Update()
     {
         
-    }
-
-    void SendCoin()
-    {
-        if (alternate)
-        {
-            
-        }
-        else
-        {
-            
-        }
-        
-
     }
 
     public IEnumerator Autoclick(int amount, float timeToWait, float timeOffset)
@@ -74,6 +63,9 @@ public class AutoClickerManager : MonoBehaviour
         if (selector == 0) { leftSideSelected = true; leftCoinThrower.ThrowACoin(); }
         if (selector == 1) { leftSideSelected = false; rightCoinThrower.ThrowACoin(); }
     }
+
+
+     
 }
     
 

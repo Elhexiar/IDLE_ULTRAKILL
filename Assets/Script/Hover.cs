@@ -6,6 +6,7 @@ public class Hover : MonoBehaviour
 {
     public Vector3 origin;
     public float amplitude; 
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,6 @@ public class Hover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = new Vector3(origin.x, origin.y, origin.z + amplitude* Mathf.Sin(Time.time));
+        gameObject.transform.position = new Vector3(origin.x, origin.y + amplitude * Mathf.Sin(Time.time * speed), origin.z);
     }
 }
