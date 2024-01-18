@@ -7,9 +7,11 @@ public class LeftSideWindowShopSelection : MonoBehaviour
 
     public GameObject arsenal;
     public bool arsenal_selected;
+    public WeaponBehaviourManager weaponBehaviourManager;
 
     public GameObject bestiarie;
     public bool bestiarie_selected;
+    public EnnemieManager ennemieManager;
     
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,8 @@ public class LeftSideWindowShopSelection : MonoBehaviour
         arsenal.SetActive(false);
         bestiarie_selected = true;
         bestiarie.SetActive(true);
+        ennemieManager.ShowDefaultSelectedEnnemie();
+        weaponBehaviourManager.HideSelectedWeapon();
     }
 
     public void ShowArsenal()
@@ -54,5 +58,7 @@ public class LeftSideWindowShopSelection : MonoBehaviour
         arsenal.SetActive(true);
         bestiarie_selected = false;
         bestiarie.SetActive(false);
+        ennemieManager.HideDefaultSelectedEnnemie();
+        weaponBehaviourManager.ShowSelectedWeapon();
     }
 }

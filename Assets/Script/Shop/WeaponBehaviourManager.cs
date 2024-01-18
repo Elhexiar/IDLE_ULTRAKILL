@@ -74,6 +74,18 @@ public class WeaponBehaviourManager : MonoBehaviour
         }
     }
 
+    public void ShowSelectedWeapon()
+    {
+        weaponList[weaponSelectionIndex].visible = true;
+        weaponList[weaponSelectionIndex].weaponGameObject.SetActive(true);
+    }
+
+    public void HideSelectedWeapon()
+    {
+        weaponList[weaponSelectionIndex].visible = false;
+        weaponList[weaponSelectionIndex].weaponGameObject.SetActive(false);
+    }
+
     public void BuySelectedWeapon()
     {
 

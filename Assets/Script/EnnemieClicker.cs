@@ -13,6 +13,9 @@ public class EnnemieClicker : MonoBehaviour
     public float speed;
     public bool autoclick_activated = false;
     public ScoreManager scoreManager;
+    public GameObject corresponding_Mesh;
+    public bool visible = false;
+
 
     public TextMeshProUGUI ui_priceRef;
     public TextMeshProUGUI ui_quantityRef;
@@ -61,5 +64,17 @@ public class EnnemieClicker : MonoBehaviour
         }
         
     }
+    
+    public void ShowModel()
+    {
+        corresponding_Mesh.SetActive(true);
+        visible = true;
 
+    }
+
+    public void HideModel()
+    {
+        corresponding_Mesh.SetActive(false);
+        visible = false;
+    }
 }

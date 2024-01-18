@@ -14,6 +14,8 @@ public class EnnemieManager : MonoBehaviour
 
     public List<EnnemieClicker> EnnemiesList;
 
+    public int selectedEnnemie = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class EnnemieManager : MonoBehaviour
             EnnemiesList[i].ui_speedRef = ui_speedRefList[i];
 
             EnnemiesList[i].UpdateUISelf();
+            EnnemiesList[i].HideModel();
 
         }
 
@@ -36,10 +39,36 @@ public class EnnemieManager : MonoBehaviour
         
     }
 
-    public void BuyEnnemie(int index)
+    public void SelectEnnemie(int index)
     {
-        
-        EnnemiesList[index].Buy();
 
+        selectedEnnemie = index;
+
+        for (int i = 0; i < EnnemiesList.Count; i++)
+        {
+            if (i == selectedEnnemie)
+            {
+                EnnemiesList[i].ShowModel();
+            }
+            else
+            {
+                EnnemiesList[i].HideModel();
+            }
+        }
+
+    }
+
+    public void ShowDefaultSelectedEnnemie()
+    {
+        EnnemiesList[selectedEnnemie].ShowModel();
+    }
+    public void HideDefaultSelectedEnnemie()
+    {
+        EnnemiesList[selectedEnnemie].HideModel();
+    }
+
+    public void BuySelectedEnnemie()
+    {
+        EnnemiesList[selectedEnnemie].Buy();
     }
 }

@@ -6,6 +6,7 @@ public class CoinPlayerInteraction : MonoBehaviour
 {
     public ScoreManager scoreManagerReference;
     public int amount;
+    public List<AudioSource> shotSound;
     // Start is called before the first frame update
     void Start()
     {
