@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class AutoClickerManager : MonoBehaviour
+public class AutoSenderManager : MonoBehaviour
 {
     public ScoreManager ScoreManagerReference;
     public List<bool> AutoClickers;

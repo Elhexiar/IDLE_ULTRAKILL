@@ -6,7 +6,7 @@ using TMPro;
 public class ShopManager : MonoBehaviour
 {
     public ScoreManager scoreManager;
-    public AutoClickerManager autoClickerManager;
+    public AutoSenderManager autoClickerManager;
     public CoinThrower leftCoinThrower;
     public CoinThrower rightCoinThrower;
     public TextMeshProUGUI CoinMultiplierTextRef, coinMultiplierPriceTextRef;
