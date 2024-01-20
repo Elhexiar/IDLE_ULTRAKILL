@@ -5,28 +5,16 @@ using TMPro;
 
 public class CoinThrower : MonoBehaviour
 {
-    public GameObject coinPrefab;
-    public Transform target;
     public ScoreManager scoreManagerRef;
+
+    public GameObject coinPrefab;
+    public GameObject v1Prefab;
+
+    public Transform target, correspondingSpawn, correspondingTarget;
+    
     public int amoutToRaise = 1;
-    public Transform correspondingSpawn, correspondingTarget;
 
     public TextMeshProUGUI coinMultiplierText;
-    
-    public GameObject V1Prefab;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ThrowACoin()
     {
@@ -43,7 +31,7 @@ public class CoinThrower : MonoBehaviour
 
     public void SendV1()
     {
-        GameObject V1 = Instantiate(V1Prefab);
+        GameObject V1 = Instantiate(v1Prefab);
         V1.GetComponent<V1Behaviour>().target = correspondingTarget;
     }
 }

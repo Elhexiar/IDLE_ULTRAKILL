@@ -23,6 +23,5 @@ public class CoinPlayerInteraction : MonoBehaviour
     {
         scoreManagerReference.RaiseTimer(amount);
         Destroy(gameObject);
-        Debug.Log("YEP");
     }
 }

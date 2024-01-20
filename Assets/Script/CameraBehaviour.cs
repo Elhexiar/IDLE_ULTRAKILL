@@ -8,50 +8,43 @@ public class CameraBehaviour : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] private float speed = 0.01f;
-     private Quaternion _originalRotation;
-     private Quaternion _currentRotation;
-     private Quaternion _ShopRotation;
+
     public GameObject targetObject;
-    [SerializeField] private Camera _camera;
+    private Quaternion originalRotation;
+    private Quaternion shopRotation;
+
     [SerializeField] private float timer;
     [SerializeField] private float timerLimit;
 
-    [SerializeField] private GameObject _ennemieShopTarget;
 
-    [SerializeField] public bool _isPlaying = false;
-    [SerializeField] public bool _onShop = false;
-    [SerializeField] private bool _onEnnemie = true;
 
-    [SerializeField] private Vector3 aled;
+    [SerializeField] public bool isPlaying = false;
+    [SerializeField] public bool onShop = false;
+    [SerializeField] private bool onEnnemie = true;
+
     [SerializeField] private bool turnCameraToShop = false;
     [SerializeField] private float amountToRotate = 90f;
 
     void Start()
     {
 
-        Debug.Log(transform.rotation.y);
-        _originalRotation = transform.rotation;
-        _ShopRotation = Quaternion.LookRotation(targetObject.transform.position - transform.position,Vector3.up);
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        aled = _ShopRotation.eulerAngles;
+        originalRotation = transform.rotation;
+        shopRotation = Quaternion.LookRotation(targetObject.transform.position - transform.position,Vector3.up);
+        
     }
 
     public void StartRotationToShop()
     {
-        if(_isPlaying == false)
+        if(isPlaying == false)
         {
             
 
-            if (_onEnnemie)
+            if (onEnnemie)
             {
                 StartCoroutine(RotateCameraToShop());
             }
-            if (_onShop)
+            if (onShop)
             {
                 StartCoroutine(RotateCameraToEnnemie());
             }
@@ -61,52 +54,52 @@ public class CameraBehaviour : MonoBehaviour
 
     public IEnumerator RotateCameraToShop()
     {
-        
-        Debug.Log("StartRotationToShop");
-        _onEnnemie = false;
-        _isPlaying = true;
+
+        onEnnemie = false;
+        isPlaying = true;
         while (timer != timerLimit)
         {
-            transform.rotation = Quaternion.Slerp(_originalRotation, _ShopRotation, timer / timerLimit);
+            transform.rotation = Quaternion.Slerp(originalRotation, shopRotation, timer / timerLimit);
             
             timer += speed;
             if(timer >= timerLimit)
             {
-                _onShop = true;
+                onShop = true;
                 timer = timerLimit;
-                yield return null;
             }
 
             yield return null;
         }
         timer = 0;
 
-        _isPlaying=false;
+        isPlaying=false;
         yield return null;
 
     }
+
+    // Does the same but for the counter rotation, could have probably find a better way to do that with one function instead
+    // RotateCameraFromTo(bool correspondingBool, Quaternion from, Quaternion to)
     public IEnumerator RotateCameraToEnnemie()
     {
-        Debug.Log("StartRotationToShop");
-        _onShop = false;
-        _isPlaying = true;
+
+        onShop = false;
+        isPlaying = true;
         while (timer != timerLimit)
         {
-            transform.rotation = Quaternion.Slerp(_ShopRotation, _originalRotation, timer / timerLimit);
+            transform.rotation = Quaternion.Slerp(shopRotation, originalRotation, timer / timerLimit);
 
             timer += speed;
             if (timer >= timerLimit)
             {
-                _onEnnemie = true;
+                onEnnemie = true;
                 timer = timerLimit;
-                yield return null;
             }
 
             yield return null;
         }
         timer = 0;
 
-        _isPlaying = false;
+        isPlaying = false;
         yield return null;
 
     }

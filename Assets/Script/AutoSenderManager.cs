@@ -6,45 +6,35 @@ using TMPro;
 public class AutoSenderManager : MonoBehaviour
 {
     public ScoreManager ScoreManagerReference;
-    public List<bool> AutoClickers;
+    public List<bool> autoSendersList;
     
-
-
-    
-
-    public int autoClickAmount;
-    public float autoClickTimer;
+    public float autoSendTimer;
+    public float timeOffset;
     public CoinThrower leftCoinThrower;
     public CoinThrower rightCoinThrower;
-    public float timeOffset;
-    public bool alternate;
+    
+
     public bool leftSideSelected;
     public bool rightSideSelected;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Autoclick(autoClickAmount, autoClickTimer, timeOffset));
+        StartCoroutine(AutoSend(autoSendTimer, timeOffset));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
-
-    public IEnumerator Autoclick(int amount, float timeToWait, float timeOffset)
+    public IEnumerator AutoSend(float timeToWait, float timeOffset)
     {
         while (true)
         {
-            //Debug.Log("Yo !");
-            foreach (var autoclick in AutoClickers) {
+            // each time i buy a V1 i add a new boolean into this list, i then check here to see if it is active
+            // if so then i send a V1 which in turn sends a coin. its done this way in case i wanted to keep track of the coins and if i wanted to, deactivate them
+            // the addition of new booleans is done in the ShopManager and should have been done here in indsight
+            foreach (var autoclick in autoSendersList) {
                 if (autoclick == true)
                 {
                     int selector = Random.Range(0, 2);
-                    
-                    //ScoreManagerReference.RaiseTimer(amount);
 
-                    Debug.Log("Sending V1");
                     if (selector == 0) { leftSideSelected = true; leftCoinThrower.SendV1(); }
                     if (selector == 1) { leftSideSelected = false; rightCoinThrower.SendV1(); }
                     

@@ -14,12 +14,6 @@ public class ScoreManager : MonoBehaviour
         UpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdateUI()
     {
         scoreUIReference.text = score.ToString();

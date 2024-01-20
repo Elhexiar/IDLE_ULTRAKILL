@@ -33,34 +33,27 @@ public class ShopManager : MonoBehaviour
         ShopUI.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
 
-        // Je sais que c'est pas hyper bien d'avoir ca dans l'update a chaque fois
-        // mais j'avoue avoir pour l'instant un peu la flemme
-        // Mathis du futur c'est pour toi
-        if(cameraRef._isPlaying == true)
+        // I know it's not good habit to have it in the update but i'm too lazy to think of an alternative rn
+        if(cameraRef.isPlaying == true)
         {
             EnnemieUI.SetActive(false);
             ShopUI.SetActive(false);
         }
         else
         {
-            if(cameraRef._onShop == true)
+            if(cameraRef.onShop == true)
             {
                 ShopUI.SetActive(true);
-
-
             }
             else
             {
                 EnnemieUI.SetActive(true);
-                updateMultUI();
+                UpdateMultUI();
             }
-
         }
-
     }
 
     public void BuyAV1()
@@ -68,7 +61,7 @@ public class ShopManager : MonoBehaviour
         if(scoreManager.score >= 20)
         {
             scoreManager.score -= 20;
-            autoClickerManager.AutoClickers.Add(true);
+            autoClickerManager.autoSendersList.Add(true);
             scoreManager.UpdateUI();
         }
         
@@ -85,14 +78,11 @@ public class ShopManager : MonoBehaviour
         }
     }
     public void IncreaseCoinMultiplier(int amount)
-    {
-        Debug.Log("Try to increase multiplier");
-        
+    {     
             
             scoreManager.UpdateUI();
 
             coinMultiplier += amount;
-            Debug.Log("Mult increased by" + amount);
             CoinMultiplierTextRef.text = coinMultiplier.ToString();
             leftCoinThrower.amoutToRaise = coinMultiplier;
             rightCoinThrower.amoutToRaise = coinMultiplier;
@@ -100,7 +90,7 @@ public class ShopManager : MonoBehaviour
         
     }
 
-    public void updateMultUI()
+    public void UpdateMultUI()
     {
         CoinMultiplierTextRef.text = coinMultiplier.ToString();
         coinMultiplierPriceTextRef.text = coinMultiplierPrice.ToString();

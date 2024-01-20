@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class LeftSideWindowShopSelection : MonoBehaviour
 {
-
-    public GameObject arsenal;
-    public bool arsenal_selected;
+    public EnnemieManager ennemieManager;
     public WeaponBehaviourManager weaponBehaviourManager;
 
+    public GameObject arsenal;
     public GameObject bestiarie;
     public bool bestiarie_selected;
-    public EnnemieManager ennemieManager;
-    
+    public bool arsenal_selected;
+
+
     // Start is called before the first frame update
     void Start()
     {

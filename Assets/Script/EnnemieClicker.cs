@@ -7,15 +7,12 @@ public class EnnemieClicker : MonoBehaviour
 {
     public string ennemieName;
     public Texture2D texture;
-    public int initialPrice;
-    public int price;
-    public int quantity;
+    public int initialPrice, price, quantity;
     public float speed;
     public bool autoclick_activated = false;
     public ScoreManager scoreManager;
     public GameObject corresponding_Mesh;
     public bool visible = false;
-
 
     public TextMeshProUGUI ui_priceRef;
     public TextMeshProUGUI ui_quantityRef;
@@ -30,7 +27,6 @@ public class EnnemieClicker : MonoBehaviour
 
     public void Buy()
     {
-        
         if(scoreManager.score >= price)
         {
             StartSelfAutoclickerCheck();
@@ -40,7 +36,6 @@ public class EnnemieClicker : MonoBehaviour
             scoreManager.UpdateUI();
             UpdateUISelf();
         }
-        
     }
 
     public void StartSelfAutoclickerCheck()
@@ -50,26 +45,22 @@ public class EnnemieClicker : MonoBehaviour
             autoclick_activated = true;
             StartCoroutine(SelfAutoCliker());
         }
-        
     }
 
     public IEnumerator SelfAutoCliker() 
     {
-
         while (true)
         {
             scoreManager.score += quantity;
             scoreManager.UpdateUI();
             yield return new WaitForSeconds(speed);
         }
-        
     }
     
     public void ShowModel()
     {
         corresponding_Mesh.SetActive(true);
         visible = true;
-
     }
 
     public void HideModel()

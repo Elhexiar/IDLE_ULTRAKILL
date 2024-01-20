@@ -6,17 +6,19 @@ using TMPro;
 public class WeaponBehaviourManager : MonoBehaviour
 {
 
-    //Weapon reference
+    //Weapon references for object construction
     public List<GameObject> weaponsRefList;
     public List<Weapon> weaponList;
     public List<string> weaponNamesList;
     public List<int> weaponInitialPricesList;
     public List<int> weaponMultiplierList;
+
     public List<TextMeshProUGUI> ui_weaponPriceRefList;
     public List<TextMeshProUGUI> ui_weaponMultiplierList;
     public List<TextMeshProUGUI> ui_weaponQTYRefList;
 
-    // A noter j'aurais clairement du utiliser des scriptable object mais la je suis trop loin dans la sunk cost fallacy et ca a l'air de marcher meme si c'est ignoble
+    //NOTE FR Mathis : A noter j'aurais clairement du utiliser des scriptable object ou des prefab
+    //mais la je suis trop loin dans la sunk cost fallacy et ca a l'air de marcher meme si c'est ignoble
 
     public ScoreManager scoreManager;
     public ShopManager shopManager;
@@ -29,31 +31,31 @@ public class WeaponBehaviourManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-
 
         for (int i = 0; i < weaponsRefList.Count; i++)
         {
             weaponList.Add(new Weapon());
-            weaponList[i].weaponGameObject = weaponsRefList[i];
-            weaponList[i].name = weaponNamesList[i];
-            weaponList[i].visible = false;
-            weaponList[i].index = i;
-            weaponList[i].multiplier = weaponMultiplierList[i];
-            weaponList[i].price = weaponInitialPricesList[i];
-            weaponList[i].ui_price = ui_weaponPriceRefList[i];
-            weaponList[i].ui_multiplier = ui_weaponMultiplierList[i];
-            weaponList[i].ui_quantity = ui_weaponQTYRefList[i];
-
-            weaponList[i].Update_UI();
+            weaponList[i] = ConstructWeapon(weaponList[i], i);
 
         }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public Weapon ConstructWeapon(Weapon weapon, int index)
     {
-        
+        weapon.weaponGameObject = weaponsRefList[index];
+        weapon.name = weaponNamesList[index];
+        weapon.visible = false;
+        weapon.index = index;
+        weapon.multiplier = weaponMultiplierList[index];
+        weapon.price = weaponInitialPricesList[index];
+        weapon.ui_price = ui_weaponPriceRefList[index];
+        weapon.ui_multiplier = ui_weaponMultiplierList[index];
+        weapon.ui_quantity = ui_weaponQTYRefList[index];
+
+        weapon.Update_UI();
+
+        return weapon;
     }
 
     public void ShowWeapon(int index)
@@ -109,31 +111,9 @@ public class WeaponBehaviourManager : MonoBehaviour
     
 }
 
-public class Weapon : ScriptableObject{
 
-    public GameObject weaponGameObject;
-    public int index;
-    public string weaponName;
-    public bool visible;
-    public int quantity = 0;
 
-    public int price;
-    public int multiplier;
-
-    public TextMeshProUGUI ui_multiplier;
-    public TextMeshProUGUI ui_price;
-    public TextMeshProUGUI ui_quantity;
-
-    public void Update_UI()
-    {
-        ui_multiplier.text = multiplier.ToString();
-        ui_price.text = price.ToString();
-        ui_quantity.text = quantity.ToString();
-    }
-
-}
-
-//Il y a une maniere plus propre et scalable de faire ca avec des array et/ou des objet de type arme mais vu qu'ici j'en ai que 4 je pense comme ca ca passe
+//how not to do it
 
 /*
 public void ShowShotgun()

@@ -1715,14 +1715,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6e8ed6d6f70b347a53ec32a5f6a23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 8031201906260757099, guid: 5376be68e52c22a4582eb3a052b69e4d, type: 3}
-  target: {fileID: 695774673}
   scoreManagerRef: {fileID: 1730400583}
-  amoutToRaise: 1
+  coinPrefab: {fileID: 8031201906260757099, guid: 5376be68e52c22a4582eb3a052b69e4d, type: 3}
+  v1Prefab: {fileID: 3623795633382129660, guid: 620c2b951c6f0734782ca9107cb859f7, type: 3}
+  target: {fileID: 695774673}
   correspondingSpawn: {fileID: 523081953}
   correspondingTarget: {fileID: 1268938605}
+  amoutToRaise: 1
   coinMultiplierText: {fileID: 0}
-  V1Prefab: {fileID: 3623795633382129660, guid: 620c2b951c6f0734782ca9107cb859f7, type: 3}
 --- !u!64 &220906199
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2533,13 +2533,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreManagerReference: {fileID: 1730400583}
-  AutoClickers: 00
-  autoClickAmount: 0
-  autoClickTimer: 2
+  autoSendersList: 
+  autoSendTimer: 4
+  timeOffset: 0.55
   leftCoinThrower: {fileID: 1445138060}
   rightCoinThrower: {fileID: 220906198}
-  timeOffset: 0.55
-  alternate: 1
   leftSideSelected: 0
   rightSideSelected: 0
 --- !u!4 &357742330
@@ -4451,6 +4449,8 @@ PrefabInstance:
     - {fileID: 114749801764459777, guid: f2ee67236e2997e4c9389a462c267c74, type: 3}
     - {fileID: 114478086656140805, guid: f2ee67236e2997e4c9389a462c267c74, type: 3}
     - {fileID: 95875545676746166, guid: f2ee67236e2997e4c9389a462c267c74, type: 3}
+    - {fileID: 114664481327481846, guid: f2ee67236e2997e4c9389a462c267c74, type: 3}
+    - {fileID: 114126893200381715, guid: f2ee67236e2997e4c9389a462c267c74, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7643,14 +7643,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.01
   targetObject: {fileID: 1706394540}
-  _camera: {fileID: 0}
   timer: 0
   timerLimit: 3
-  _ennemieShopTarget: {fileID: 0}
-  _isPlaying: 0
-  _onShop: 0
-  _onEnnemie: 1
-  aled: {x: 0, y: 0, z: 0}
+  isPlaying: 0
+  onShop: 0
+  onEnnemie: 1
   turnCameraToShop: 0
   amountToRotate: 70
 --- !u!1 &973437934
@@ -10235,6 +10232,7 @@ PrefabInstance:
     - {fileID: 114526165674069625, guid: 7bd804f96d592954e96628dc3990ca7f, type: 3}
     - {fileID: 114492020832838974, guid: 7bd804f96d592954e96628dc3990ca7f, type: 3}
     - {fileID: 114242878519645597, guid: 7bd804f96d592954e96628dc3990ca7f, type: 3}
+    - {fileID: 114652367441281688, guid: 7bd804f96d592954e96628dc3990ca7f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11343,7 +11341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1303913749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12670,14 +12668,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6e8ed6d6f70b347a53ec32a5f6a23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 8031201906260757099, guid: 5376be68e52c22a4582eb3a052b69e4d, type: 3}
-  target: {fileID: 695774673}
   scoreManagerRef: {fileID: 1730400583}
-  amoutToRaise: 1
+  coinPrefab: {fileID: 8031201906260757099, guid: 5376be68e52c22a4582eb3a052b69e4d, type: 3}
+  v1Prefab: {fileID: 4029311853910469573, guid: 3d89fc1711193384e975863bb78def96, type: 3}
+  target: {fileID: 695774673}
   correspondingSpawn: {fileID: 671150921}
   correspondingTarget: {fileID: 1992645449}
+  amoutToRaise: 1
   coinMultiplierText: {fileID: 0}
-  V1Prefab: {fileID: 4029311853910469573, guid: 3d89fc1711193384e975863bb78def96, type: 3}
 --- !u!1 &1454361569
 GameObject:
   m_ObjectHideFlags: 0
@@ -12878,11 +12876,11 @@ MonoBehaviour:
   - {fileID: 943060873}
   - {fileID: 1409974708}
   - {fileID: 797177530}
-  EnnemiesList:
+  ennemieList:
   - {fileID: 1792987609}
   - {fileID: 1848960608}
   - {fileID: 1113400440}
-  selectedEnnemie: 0
+  selectedEnnemieIndex: 0
 --- !u!1 &1504676699
 GameObject:
   m_ObjectHideFlags: 0
@@ -12935,12 +12933,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac4acc49486d8040b91f2b29ec7388a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arsenal: {fileID: 1665033279}
-  arsenal_selected: 0
+  ennemieManager: {fileID: 1499342779}
   weaponBehaviourManager: {fileID: 1806511859}
+  arsenal: {fileID: 1665033279}
   bestiarie: {fileID: 856999383}
   bestiarie_selected: 0
-  ennemieManager: {fileID: 1499342779}
+  arsenal_selected: 0
 --- !u!1 &1508269178 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1315487770316788, guid: c2339c0ec1498514496614c4404d8e2c, type: 3}

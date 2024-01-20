@@ -7,26 +7,25 @@ using JetBrains.Annotations;
 public class EnnemieManager : MonoBehaviour
 {
 
-    
     public List<TextMeshProUGUI> ui_priceRefList;
     public List<TextMeshProUGUI> ui_quantityRefList;
     public List<TextMeshProUGUI> ui_speedRefList;
 
-    public List<EnnemieClicker> EnnemiesList;
+    public List<EnnemieClicker> ennemieList;
 
-    public int selectedEnnemie = 0;
+    public int selectedEnnemieIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < EnnemiesList.Count; i++)
+        for (int i = 0; i < ennemieList.Count; i++)
         {
-            EnnemiesList[i].ui_priceRef = ui_priceRefList[i];
-            EnnemiesList[i].ui_quantityRef = ui_quantityRefList[i];
-            EnnemiesList[i].ui_speedRef = ui_speedRefList[i];
+            ennemieList[i].ui_priceRef = ui_priceRefList[i];
+            ennemieList[i].ui_quantityRef = ui_quantityRefList[i];
+            ennemieList[i].ui_speedRef = ui_speedRefList[i];
 
-            EnnemiesList[i].UpdateUISelf();
-            EnnemiesList[i].HideModel();
+            ennemieList[i].UpdateUISelf();
+            ennemieList[i].HideModel();
 
         }
 
@@ -42,17 +41,17 @@ public class EnnemieManager : MonoBehaviour
     public void SelectEnnemie(int index)
     {
 
-        selectedEnnemie = index;
+        selectedEnnemieIndex = index;
 
-        for (int i = 0; i < EnnemiesList.Count; i++)
+        for (int i = 0; i < ennemieList.Count; i++)
         {
-            if (i == selectedEnnemie)
+            if (i == selectedEnnemieIndex)
             {
-                EnnemiesList[i].ShowModel();
+                ennemieList[i].ShowModel();
             }
             else
             {
-                EnnemiesList[i].HideModel();
+                ennemieList[i].HideModel();
             }
         }
 
@@ -60,15 +59,15 @@ public class EnnemieManager : MonoBehaviour
 
     public void ShowDefaultSelectedEnnemie()
     {
-        EnnemiesList[selectedEnnemie].ShowModel();
+        ennemieList[selectedEnnemieIndex].ShowModel();
     }
     public void HideDefaultSelectedEnnemie()
     {
-        EnnemiesList[selectedEnnemie].HideModel();
+        ennemieList[selectedEnnemieIndex].HideModel();
     }
 
     public void BuySelectedEnnemie()
     {
-        EnnemiesList[selectedEnnemie].Buy();
+        ennemieList[selectedEnnemieIndex].Buy();
     }
 }

@@ -18,7 +18,6 @@ public class Hover : MonoBehaviour
     void Update()
     {
         gameObject.transform.position = new Vector3(origin.x, origin.y + amplitude * Mathf.Sin(Time.time * speed), origin.z);
-
         gameObject.transform.Rotate(0, rotationSpeed, 0);
     }
 }

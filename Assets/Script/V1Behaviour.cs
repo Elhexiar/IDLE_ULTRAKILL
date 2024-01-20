@@ -14,7 +14,6 @@ public class V1Behaviour : MonoBehaviour
     void Start()
     {
         StartCoroutine(AutoDie());
-        
     }
 
     // Update is called once per frame

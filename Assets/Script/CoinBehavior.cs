@@ -13,23 +13,10 @@ public class CoinBehavior : MonoBehaviour
     public float randomLowHeightOffset = -5f;
     public float randomHighHeightOffset = 5f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-            
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Jump()
     {
-        // ca doit faire lagger de fou
+        // Launching a new coroutine to destroy each coin is not good for performance with a lot of coins
+        // i should store the coins in a list and just destroy them by wave each time a new coin wave is thrown
         StartCoroutine(destryCoin(autoDestructionTimer));
         Vector3 jumpVector = (origin.position - (target.position + Vector3.up * Random.Range(randomLowHeightOffset, randomHighHeightOffset))).normalized;
         gameObject.GetComponent<Rigidbody>().AddForce(jumpVector * jumpForce);
@@ -41,14 +28,5 @@ public class CoinBehavior : MonoBehaviour
         Destroy(gameObject);
 
     }
-
-    /*
-    private void OnMouseDown()
-    {
-        scoreManagerReference.RaiseTimer(value);
-        Destroy(gameObject);
-    }
-    */
-
 
 }
